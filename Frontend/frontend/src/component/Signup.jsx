@@ -10,7 +10,8 @@ function Signup() {
     const hamdleSubmit = async (e) =>{
         e.preventDefault()
         try{
-            const result = await axios.post("http://localhost:4000/signup" ,{name,email,password})
+            const API_URL = import.meta.env.VITE_API_URL;
+            const result = await axios.post(`${API_URL}/api/signup`,{name,email,password})
             console.log(result.data)
             if (result) {
                 return navigate('/login')
