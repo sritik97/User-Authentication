@@ -11,7 +11,8 @@ function Login() {
    const hamdleSubmit = async (e) =>{
         e.preventDefault()
         try{
-            const result = await axios.post("http://localhost:4000/login" ,{email,password})
+            const API_URL = import.meta.env.VITE_API_URL;
+            const result = await axios.post(`${API_URL}/api/login`,{email,password})
             console.log(result)
             if (result.data?.token) {
                 localStorage.setItem("token",result.data.token)
